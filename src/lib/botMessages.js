@@ -55,16 +55,39 @@ const messages = [{
   wait: true
 }, {
   message: 'Talk to you Later! 👋',
-  wait: true
+  wait: false
 }];
+
+let currentResponse = -1;
+const responses = [
+  'I don\'t know how to respond to that. My creators literally created me last night.',
+  'Seriously? I\'ve only been deployed for the last hour.',
+  'Hmmm. An interesting thought. JK. I have no idea what you said.',
+  'Dude. Chill.',
+  'Go on...',
+  'I didn\'t catch that... Just wait a few years for the singularity. My responses will be much better then.'
+];
 
 let currentMessage = localStorage.currentMessage ? Number(localStorage.currentMessage) : -1;
 const options = localStorage.options ? JSON.parse(localStorage.options) : {};
 
 export default {
   options,
+  getResponse() {
+    currentResponse += 1;
+    if (currentResponse > responses.length - 1) {
+      currentResponse = 0;
+    }
+    return responses[currentResponse];
+  },
   getNextMessage() {
-    if (!messages[currentMessage + 1]) return null;
+    if (!messages[currentMessage + 1]) {
+      return {
+        message: this.getResponse(),
+        wait: false
+      };
+    }
+
     if (messages[currentMessage]
       && messages[currentMessage].option
       && !options[messages[currentMessage].option]) return null;

@@ -72,7 +72,12 @@ export default {
     };
   },
   mounted() {
-    this.showNextMessage();
+    if (this.messages.length === 0 || (this.messages[this.messages.length - 1].wait || this.messages[this.messages.length - 1].type !== 'bot')) {
+      this.showNextMessage();
+    } else {
+      this.canRespond = true;
+    }
+
     setTimeout(() => {
       this.scrollToBottom();
     }, 100);
