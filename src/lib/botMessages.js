@@ -65,7 +65,7 @@ const dailyMessages = [{
   message: 'That sounds interesting!',
   wait: true
 }, {
-  message: 'What project did you work on',
+  message: 'What project did you work on?',
   wait: false
 }, {
   message: '🤗 Holy cow! Thanks!',
