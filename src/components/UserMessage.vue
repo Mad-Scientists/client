@@ -6,7 +6,7 @@
     </v-flex>
     <v-flex xs1>
       <v-list-tile-avatar>
-      <img :src="options.user_image || 'http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png'"/>
+      <img :src="options.user_image || 'https://i.imgur.com/EVNRBG9.png'"/>
       </v-list-tile-avatar>
     </v-flex>
   </v-layout>
