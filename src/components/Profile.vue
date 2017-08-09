@@ -44,7 +44,7 @@
       </v-card>
       </v-flex>
     </v-layout>
-    <v-btn light @click.native="startDailyMessages()">Daily Messages</v-btn>
+    <v-btn light @click.native="startDailyMessages()">🤖</v-btn>
   </v-container>
 </template>
 
