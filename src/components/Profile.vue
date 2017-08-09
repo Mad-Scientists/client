@@ -1,7 +1,7 @@
 <template lang="html">
         <v-container>
           <v-layout row>
-            <v-flex>
+            <v-flex xs8 offset-xs2>
               <v-card class="grey pa-2">
                 <v-card class="white white--text pa-2">
                   <v-card-title primary-title>
@@ -11,204 +11,18 @@
                     <hr>
                   </div>
                   <div class="scroll-it">
+                    <div v-for="message in messages">
+                      <BotMessage v-if="message.type == 'bot'" :message="message.message"></BotMessage>
+                      <UserMessage v-if="message.type !== 'bot'" :message="message.message"></UserMessage>
+                    </div>
 
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip>Hello, I'm Bestie!</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">But you can call me something different, if you want. </v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">What would you like to call me?</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS HERE FAM *** -->
-                  <v-layout>
-                    <v-flex xs6 offset-xs2 class="text-xs-left">
-                      <v-chip class="teal lighten-4 chips">Jim-Bob McGruff Elizabeth Montgomery</v-chip>
-                    </v-flex>
-                    <v-flex xs1>
-                      <v-list-tile-avatar>
-                      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS ABOVE FAM *** -->
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">'Jim-Bob McGruff Elizabeth Montgomery'! I like that. Is this what you want to call me?</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS HERE FAM *** -->
-                  <v-layout>
-                    <v-flex xs6 offset-xs2 class="text-xs-left">
-                      <v-chip class="teal lighten-4 chips">Yes</v-chip>
-                    </v-flex>
-                    <v-flex xs1>
-                      <v-list-tile-avatar>
-                      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">Great! What should I call you?</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS HERE FAM *** -->
-                  <v-layout>
-                    <v-flex xs6 offset-xs2 class="text-xs-left">
-                      <v-chip class="teal lighten-4 chips">CJ</v-chip>
-                    </v-flex>
-                    <v-flex xs1>
-                      <v-list-tile-avatar>
-                      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">Hello, CJ! Did I spell that right?</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS HERE FAM *** -->
-                  <v-layout>
-                    <v-flex xs6 offset-xs2 class="text-xs-left">
-                      <v-chip class="teal lighten-4 chips">Yes</v-chip>
-                    </v-flex>
-                    <v-flex xs1>
-                      <v-list-tile-avatar>
-                      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">Jim-Bob McGruff Elizabeth Montgomery and CJ. That's got a nice ring to it.</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">I will send you messages throughout the day.</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">What is the first time of day I should contact you?</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS HERE FAM *** -->
-                  <v-layout>
-                    <v-flex xs6 offset-xs2 class="text-xs-left">
-                      <v-chip class="teal lighten-4 chips">7AM</v-chip>
-                    </v-flex>
-                    <v-flex xs1>
-                      <v-list-tile-avatar>
-                      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">Nice and early. I like it.</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">What other time of day should I contact you?</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <!-- *** USER TEXTS HERE FAM *** -->
-                  <v-layout>
-                    <v-flex xs6 offset-xs2 class="text-xs-left">
-                      <v-chip class="teal lighten-4 chips">10AM</v-chip>
-                    </v-flex>
-                    <v-flex xs1>
-                      <v-list-tile-avatar>
-                      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">OK! I'll send you a message everyday at 7AM and 10AM.</v-chip>
-                    </v-flex>
-                  </v-layout>
-                  <v-layout>
-                    <v-flex xs1 offset-xs2>
-                      <v-list-tile-avatar>
-                        <img src="http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png"/>
-                      </v-list-tile-avatar>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-chip class="chips">There are a few more ways to customize me. Click here to update your preferences.</v-chip>
-                    </v-flex>
-                  </v-layout>
+                    <v-layout v-if="thinking">
+                      <v-flex xs1 offset-xs2>
+                      </v-flex>
+                      <v-flex xs6>
+                        <v-progress-circular indeterminate class="amber--text"></v-progress-circular>
+                      </v-flex>
+                    </v-layout>
                   </div>
                   <div class="pa-3">
                     <hr>
@@ -216,12 +30,14 @@
                 <v-layout>
                 <v-flex xs6 offset-xs2>
                   <v-text-field
-                 label="Text"
+                  :disabled="!canRespond"
+                  label="Message"
+                  v-model="message"
                ></v-text-field>
                 </v-flex>
                   <v-flex xs4>
                     <v-card-actions>
-                      <v-btn>Send</v-btn>
+                      <v-btn :disabled="!canRespond" @click.native="send()">Send</v-btn>
                     </v-card-actions>
                   </v-flex>
                 </v-layout>
@@ -235,7 +51,74 @@
 </template>
 
 <script>
+import BotMessage from './BotMessage';
+import UserMessage from './UserMessage';
+import botMessages from '../lib/botMessages';
+
 export default {
+  name: 'Profile',
+  components: {
+    BotMessage,
+    UserMessage
+  },
+  data() {
+    return {
+      messages: [],
+      canRespond: false,
+      thinking: false,
+      message: ''
+    };
+  },
+  mounted() {
+    this.showNextMessage();
+  },
+  watch: {
+    messages() {
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 100);
+    }
+  },
+  methods: {
+    showNextMessage() {
+      const message = botMessages.getNextMessage();
+      if (!message) {
+        this.canRespond = true;
+        this.thinking = false;
+        return '💩';
+      }
+      message.type = 'bot';
+      this.messages.push(message);
+      if (message.wait) {
+        this.canRespond = false;
+        this.thinking = true;
+        setTimeout(() => {
+          this.showNextMessage();
+        }, 2500);
+      } else {
+        this.thinking = false;
+        this.canRespond = true;
+      }
+      return '💩';
+    },
+    send() {
+      const message = {
+        message: this.message
+      };
+      this.messages.push(message);
+      this.thinking = true;
+      this.canRespond = false;
+      this.message = '';
+      setTimeout(() => {
+        this.showNextMessage();
+      }, 2500);
+    },
+    scrollToBottom() {
+      const container = this.$el.querySelector('.scroll-it');
+      container.scrollTop = container.scrollHeight;
+    }
+
+  }
 };
 </script>
 
