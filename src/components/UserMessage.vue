@@ -6,7 +6,7 @@
     </v-flex>
     <v-flex xs1>
       <v-list-tile-avatar>
-      <img src="http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png"/>
+      <img :src="options.user_image || 'http://modexenergy.com/wp-content/themes/modex_wp/img/avatar.png'"/>
       </v-list-tile-avatar>
     </v-flex>
   </v-layout>
@@ -15,7 +15,7 @@
 <script>
 export default {
   name: 'UserMessage',
-  props: ['message']
+  props: ['message', 'options']
 };
 </script>
 

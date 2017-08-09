@@ -5,17 +5,16 @@
               <v-card class="grey pa-2">
                 <v-card class="white white--text pa-2">
                   <v-card-title primary-title>
-                    <div class="text-xs-center"> <h5>Bestie</h5></div>
+                    <div class="text-xs-center"><h5>{{options.bot_name || 'Bestie'}}</h5></div>
                   </v-card-title>
                   <div class="pl-3 pr-3 pb-3">
                     <hr>
                   </div>
                   <div class="scroll-it">
                     <div v-for="message in messages">
-                      <BotMessage v-if="message.type == 'bot'" :message="message.message"></BotMessage>
-                      <UserMessage v-if="message.type !== 'bot'" :message="message.message"></UserMessage>
+                      <BotMessage v-if="message.type == 'bot'" :message="message.message" :options="options"></BotMessage>
+                      <UserMessage v-if="message.type !== 'bot'" :message="message.message" :options="options"></UserMessage>
                     </div>
-
                     <v-layout v-if="thinking">
                       <v-flex xs1 offset-xs2>
                       </v-flex>
@@ -55,6 +54,8 @@ import BotMessage from './BotMessage';
 import UserMessage from './UserMessage';
 import botMessages from '../lib/botMessages';
 
+const thinkTime = 2500;
+
 export default {
   name: 'Profile',
   components: {
@@ -63,17 +64,22 @@ export default {
   },
   data() {
     return {
-      messages: [],
+      messages: localStorage.messages ? JSON.parse(localStorage.messages) : [],
       canRespond: false,
       thinking: false,
-      message: ''
+      message: '',
+      options: botMessages.options
     };
   },
   mounted() {
     this.showNextMessage();
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 100);
   },
   watch: {
     messages() {
+      localStorage.messages = JSON.stringify(this.messages);
       setTimeout(() => {
         this.scrollToBottom();
       }, 100);
@@ -94,7 +100,7 @@ export default {
         this.thinking = true;
         setTimeout(() => {
           this.showNextMessage();
-        }, 2500);
+        }, thinkTime);
       } else {
         this.thinking = false;
         this.canRespond = true;
@@ -110,8 +116,9 @@ export default {
       this.canRespond = false;
       this.message = '';
       setTimeout(() => {
+        botMessages.processResponse(message.message);
         this.showNextMessage();
-      }, 2500);
+      }, thinkTime);
     },
     scrollToBottom() {
       const container = this.$el.querySelector('.scroll-it');
@@ -133,8 +140,9 @@ span, .chips {
 }
 
 .scroll-it {
-  max-height: 40vh;
-  overflow: scroll;
+  height: 40vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 </style>
