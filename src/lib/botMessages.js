@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-const messages = [{
+const firstMessages = [{
   message: 'Hello, I\'m Bestie!',
   wait: true
 }, {
@@ -58,6 +58,48 @@ const messages = [{
   wait: false
 }];
 
+const dailyMessages = [{
+  message: option => `Hey ${option.user_name}! How was your morning?`,
+  wait: false
+}, {
+  message: 'That sounds interesting!',
+  wait: true
+}, {
+  message: 'What project did you work on',
+  wait: false
+}, {
+  message: '🤗 Holy cow! Thanks!',
+  wait: true
+}, {
+  message: 'It\'s so nice to meet my creator!',
+  wait: true
+}, {
+  message: 'Are the other projects interesting?',
+  wait: false
+}, {
+  message: 'That\'s great to hear. I\'d like to work on a project sometime.',
+  wait: true
+}, {
+  message: option => `So ${option.user_name}, what are your plans for the afternoon?`,
+  wait: false
+}, {
+  message: 'How nice! Are you doing anything else?',
+  option: 'something_else',
+  wait: false
+}, {
+  message: option => `'${option.something_else}' sounds educational!`,
+  wait: true
+}, {
+  message: 'I hope it goes well.',
+  wait: true
+}, {
+  message: 'Is there anything else you want to talk about?',
+  wait: false
+}, {
+  message: 'Alright. Have a great afternoon! 👋',
+  wait: false
+}];
+
 let currentResponse = -1;
 const responses = [
   'I don\'t know how to respond to that. My creators literally created me last night.',
@@ -70,9 +112,15 @@ const responses = [
 
 let currentMessage = localStorage.currentMessage ? Number(localStorage.currentMessage) : -1;
 const options = localStorage.options ? JSON.parse(localStorage.options) : {};
+let messages = firstMessages.map(m => Object.assign({}, m));
 
 export default {
   options,
+  setupDailyMessages() {
+    messages = dailyMessages.map(m => Object.assign({}, m));
+    currentMessage = -1;
+    localStorage.currentMessage = currentMessage;
+  },
   getResponse() {
     currentResponse += 1;
     if (currentResponse > responses.length - 1) {
