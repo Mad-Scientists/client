@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12 md6 offset-md3>
         <v-card>
-          <v-toolbar class="indigo" dark>
+          <v-toolbar class="cyan darken-2" dark>
             <v-toolbar-title>Bestie Login</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
