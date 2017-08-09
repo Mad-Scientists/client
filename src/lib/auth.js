@@ -1,4 +1,5 @@
-const AUTH_URL = 'http://localhost:3000/auth';
+const BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://api.bestie.chat';
+const AUTH_URL = `${BASE_URL}/auth`;
 
 function setToken(result) {
   localStorage.token = result.token;
