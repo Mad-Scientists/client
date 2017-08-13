@@ -1,11 +1,11 @@
 <template>
   <v-layout class="mt-5" row wrap>
-    <v-flex s4 offset-s1 order-xs2>
+    <v-flex xs12 s4 offset-s1 order-xs2>
       <center>
         <img class="chat-image" src="static/chat.png" />
       </center>
     </v-flex>
-    <v-flex  s6 order-xs1>
+    <v-flex xs12 s6 order-xs1 >
       <h2 class="text-xs-center bestie">Bestie</h2>
       <h3 class="text-xs-center">Your new best friend.</h3>
       <center>
@@ -35,13 +35,16 @@ export default {
 </script>
 
 <style scoped>
+
 .chat-image {
    width: auto;
    height: auto;
  }
 
-.flex-par {
-  display: flex;
-  justify-content: center;
+ @media (max-width: 700px) {
+  .chat-image {
+    display: none;
+  }
 }
+
 </style>
